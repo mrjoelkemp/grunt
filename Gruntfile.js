@@ -35,6 +35,12 @@ module.exports = function(grunt) {
         node: true,
       }
     },
+    jscs: {
+      src: ['lib/**/*.js', 'internal-tasks/**/*.js', 'test/**/*.js', '!test/fixtures/**/*.js'],
+      options: {
+        config: '.jscsrc'
+      }
+    },
     watch: {
       gruntfile_tasks: {
         files: ['<%= jshint.gruntfile_tasks %>'],
@@ -58,12 +64,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-jscs');
 
   // Some internal tasks. Maybe someday these will be released.
   grunt.loadTasks('internal-tasks');
 
   // "npm test" runs these tasks
-  grunt.registerTask('test', ['jshint', 'nodeunit', 'subgrunt']);
+  grunt.registerTask('test', ['jshint', 'jscs', 'nodeunit', 'subgrunt']);
 
   // Default task.
   grunt.registerTask('default', ['test']);
