@@ -1,5 +1,9 @@
 {
   "preset": "google",
   "maximumLineLength": null,
-  "requireCamelCaseOrUpperCaseIdentifiers": "ignoreProperties"
+  "requireCamelCaseOrUpperCaseIdentifiers": "ignoreProperties",
+  "validateQuoteMarks": { "mark": "'", "escape": true },
+
+  // Turned off until https://github.com/jscs-dev/node-jscs/issues/741
+  "disallowMultipleVarDecl": null
 }
